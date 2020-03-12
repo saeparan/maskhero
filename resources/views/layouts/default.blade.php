@@ -58,6 +58,10 @@
             font-size: .8rem !important;
         }
 
+        .div-store-info > .card-body h6 {
+            font-size: 0.4rem !important;
+        }
+
         .card-bottom {
             border-top-left-radius: .45rem !important;
             border-top-right-radius: .45rem !important;

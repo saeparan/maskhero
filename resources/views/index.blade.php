@@ -26,6 +26,9 @@
                     @if (date('H') > 21 || date('H') < 8)
                     <h6 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트 됩니다.</h6>
                     @endif
+
+                    <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>
+                    <h6 id="" class="font-weight-light">데이터상 실제 재고와 10분 이상 차이가 있을 수 있으므로, 약국에 항의는 하지 말아주세요.</h6>
                 </div>
             </div>
         </div>
