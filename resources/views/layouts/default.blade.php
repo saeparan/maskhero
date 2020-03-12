@@ -21,7 +21,7 @@
     <link href=//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css rel=stylesheet type=text/css>
     <script type="text/javascript"
             src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dn4q87xmjw"></script>
-    <title>마스크히어로</title>
+    <title>마스크히어로 - 마스크 걱정없는 그날까지 (공공마스크)</title>
     <meta name="description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
     <meta name="twitter:title" content="마스크히어로" class="next-head" />
     <meta name="twitter:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
