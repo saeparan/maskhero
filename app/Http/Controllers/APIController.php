@@ -22,7 +22,7 @@ class APIController extends Controller
                 )
             ) AS distance
             ', [$lat, $lng, $lat])
-            ->having('distance', '<', 0.8)
+            ->having('distance', '<', 1.2)
             ->get()
         ;
 
