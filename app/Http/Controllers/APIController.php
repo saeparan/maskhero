@@ -32,7 +32,7 @@ class APIController extends Controller
     public function getStore($code)
     {
         $stores = DB::table('stores')
-            ->select(['code', 'addr', 'name', 'remain_stat', 'stock_at', 'update_time', 'type', 'lat', 'lng'])
+            ->select(['code', 'addr', 'name', 'remain_stat', 'stock_at', 'update_time', 'type', 'lat', 'lng', 'created_at'])
             ->where('code', '=', $code)
             ->first()
         ;
