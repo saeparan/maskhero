@@ -33,6 +33,7 @@
     <meta property="og:site_name" content="마스크히어로" class="next-head" />
     <meta property="og:image" content="https://maskhero.net/img/mask.png" class="next-head" />
     <meta property="og:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <style>
         body, html {
             height: 100%;
