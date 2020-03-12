@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('store:scraping --force')->everyFiveMinutes();
+        $schedule->command('store:scraping')->everyFiveMinutes();
     }
 
     /**
