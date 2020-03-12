@@ -46,19 +46,24 @@
             'some': '보통',
             'few': '부족',
             'empty': '재고없음',
+            'none': '입고전',
         }
         var stock_text = {
             'plenty': '100개 이상 보유',
             'some': '30~99개 보유',
             'few': '2~29개 보유',
             'empty': '재고없음',
+            'none': '오늘 입고 안됨',
         }
         var stock_color = {
             'plenty': 'primary',
             'some': 'primary',
             'few': 'primary',
             'empty': 'danger',
+            'none': 'dark',
         }
+        var today = new Date();
+        today.setHours(0,0,0,0);
 
         function onSuccessGeolocation(position) {
             var location = new naver.maps.LatLng(position.coords.latitude,
@@ -92,6 +97,9 @@
                     var data = response.data;
                     for (var i = 0; i < data.length; i++) {
                         var dataItem = data[i];
+                        if( new Date(dataItem.stock_at) < today || dataItem.stock_at === null ) {
+                            dataItem.remain_stat = 'none';
+                        }
                         if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
                             dataItem.remain_stat = 'few';
                         }
@@ -126,14 +134,24 @@
                 axios.get('/api/store/' + code)
                     .then(function (response) {
                         var dataItem = response.data;
-                        $('#store_name').text(dataItem.name);
-                        $('#store_addr').text(dataItem.addr);
-                        $('#store_stock_at').text(dataItem.stock_at + ' 마스크 입고');
-                        $('#store_update_time').text(dataItem.created_at + ' 기준');
 
                         if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
                             dataItem.remain_stat = 'few';
                         }
+                        if( new Date(dataItem.stock_at) < today || dataItem.stock_at === null ) {
+                            dataItem.remain_stat = 'none';
+                        }
+
+                        $('#store_name').text(dataItem.name);
+                        $('#store_addr').text(dataItem.addr);
+
+                        if( dataItem.stock_at_text == 0 ) {
+                            dataItem.stock_at_text = '입고일 확인 불가';
+                        } else {
+                            dataItem.stock_at_text = dataItem.stock_at_text + ' 마스크 입고';
+                        }
+                        $('#store_stock_at').text(dataItem.stock_at_text);
+                        $('#store_update_time').text(dataItem.created_at + ' 기준');
 
                         $('#store_badge').text(stock_at[dataItem.remain_stat]).removeClass('badge-danger badge-primary').addClass('badge-' + stock_color[dataItem.remain_stat]);
                         $('#store_stock').text(stock_text[dataItem.remain_stat]);
