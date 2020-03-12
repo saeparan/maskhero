@@ -79,6 +79,8 @@ class StoreScraping extends Command
                         ->updateOrInsert(
                             ['code' => $store->code],
                             [
+                                'lat' => $store->lat,
+                                'lng' => $store->lng,
                                 'addr' => $store->addr,
                                 'area_id' => $area->id,
                                 'name' => $store->name,
