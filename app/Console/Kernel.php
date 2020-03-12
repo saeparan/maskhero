@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('store:scraping')->everyFiveMinutes();
+        $schedule->command('store:scraping')->->cron('*/5 8-22 * * *');
     }
 
     /**
