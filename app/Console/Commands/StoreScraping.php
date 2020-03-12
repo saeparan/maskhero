@@ -53,6 +53,10 @@ class StoreScraping extends Command
                 if( !isset($store->stock_at) ) {
                     $store->stock_at = null;
                 }
+                if( $store->lng=='' || $store->lat=='' ) {
+                    $store->lng = 0;
+                    $store->lat = 0;
+                }
                 DB::table('stores')
                     ->updateOrInsert(
                         ['code' => $store->code],
@@ -61,6 +65,7 @@ class StoreScraping extends Command
                             'area_id' => $area->id,
                             'name' => $store->name,
                             'remain_stat' => $store->remain_stat,
+                            'created_at' => $store->created_at,
                             'stock_at' => $store->stock_at,
                             'type' => $store->type,
                             'coordinate' => DB::raw("(GeomFromText('POINT({$store->lat} {$store->lng})'))"),

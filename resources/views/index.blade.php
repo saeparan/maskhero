@@ -6,8 +6,8 @@
         <div class="col-10 offset-1 col-md-6 offset-md-3">
             <div id="div-store-info" class="card-bottom shadow-sm card shadow w-100"
                  style="margin: 0px auto; display: none;">
-                <div id="btn-store-info-close" class="pull-right position-absolute font-weight-light text-sm-right"
-                     style="right: 1px; cursor: pointer;">
+                <div id="btn-store-info-close" class="pull-right position-absolute font-weight-light text-md-right"
+                     style="right: 1rem; top: 1rem; cursor: pointer;">
                     <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="card-body text-gray-900">
@@ -16,14 +16,12 @@
                             <span id="store_badge" class="badge badge-pill badge-danger mr-1 align-middle">품절</span>
                             <span id="store_name" class="h4 font-weight-bold align-middle">토궁퉁약국</span>
                         </div>
-                        <div class="col-md-6 font-weight-light text-sm-right">
-                            <span id="store_update_time">2020-02-02 14:55</span>
-                        </div>
                     </div>
 
                     <h6 id="store_addr" class="pb-2 font-weight-light">서울시</h6>
                     <h5 id="store_stock" class="pb-2">현재 재고 0개</h5>
                     <h6 id="store_stock_at" class="font-weight-light"></h6>
+                    <span id="store_update_time">2020-02-02 14:55</span>
 
                     @if (date('H') > 21 || date('H') < 8)
                     <h6 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트 됩니다.</h6>

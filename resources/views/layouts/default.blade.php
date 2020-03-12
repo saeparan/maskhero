@@ -12,6 +12,17 @@
     <script type="text/javascript"
             src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dn4q87xmjw"></script>
     <title>마스크히어로</title>
+    <meta name="description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <meta name="twitter:title" content="마스크히어로" class="next-head" />
+    <meta name="twitter:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <meta name="twitter:creator" content="maskhero" class="next-head" />
+    <meta name="twitter:site" content="maskhero" class="next-head" />
+    <meta name="twitter:url" content="https://maskhero.net/" class="next-head" />
+    <meta property="og:title" content="마스크히어로" class="next-head" />
+    <meta property="og:url" content="https://maskhero.net" class="next-head" />
+    <meta property="og:site_name" content="마스크히어로" class="next-head" />
+    <meta property="og:image" content="https://maskhero.net/img/mask.png" class="next-head" />
+    <meta property="og:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
     <style>
         body, html {
             height: 100%;
@@ -79,9 +90,9 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-1 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/about">이용안내</a>
-                </li>
+{{--                <li class="nav-item active">--}}
+{{--                    <a class="nav-link" href="/about">이용안내</a>--}}
+{{--                </li>--}}
                 <li class="nav-item active">
                     <a class="nav-link" href="/">지도</a>
                 </li>
