@@ -129,7 +129,7 @@
                         $('#store_name').text(dataItem.name);
                         $('#store_addr').text(dataItem.addr);
                         $('#store_stock_at').text(dataItem.stock_at + ' 마스크 입고');
-                        $('#store_update_time').text(dataItem.update_time + ' 기준');
+                        $('#store_update_time').text(dataItem.created_at + ' 기준');
 
                         if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
                             dataItem.remain_stat = 'few';
