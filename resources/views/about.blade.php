@@ -37,9 +37,9 @@
                 </div>
                 <div class="col-12 col-sm-3 mt-3">
                     <div class="card h-100">
-                        <div class="card-header">추후공개</div>
+                        <div class="card-header">평균 품절 시간</div>
                         <div class="card-body text-center">
-                            <h3 class="card-title">114,534</h3>
+                            <h3 class="card-title">추후공개</h3>
                         </div>
                     </div>
                 </div>
