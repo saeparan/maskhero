@@ -61,7 +61,7 @@
             'break': '업체 사정으로 판매중지',
         }
         var stock_color = {
-            'plenty': 'primary',
+            'plenty': 'success',
             'some': 'primary',
             'few': 'primary',
             'empty': 'danger',
