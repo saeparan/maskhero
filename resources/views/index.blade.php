@@ -66,7 +66,7 @@
             'few': 'primary',
             'empty': 'danger',
             'none': 'dark',
-            'break': 'danber',
+            'break': 'danger',
         }
         var today = new Date();
         today.setHours(0,0,0,0);
