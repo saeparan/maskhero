@@ -4,7 +4,7 @@
     <div class="row mt-5">
         <div class="col-10 offset-1 col-md-6 mt-md-3 text-gray-900">
             <h1 class="text-weight-bold">코로나19.</h1>
-            <h4 class="mb-3 font-weight-light">함께 이겨내요.</h4>
+            <h5 class="mb-3 font-weight-light">함께 이겨내요.</h5>
             <h6 class="pt-3 font-weight-light">
                 <p>전례없는 전염병으로 국가위기에 봉착해 있는 지금, 모두가 힘을 모아 열심히 잘싸우고 계십니다.</p>
                 <p>이 사이트는 코로나19에 공동대응 하기 위해서 만들어졌습니다.</p>
@@ -13,11 +13,11 @@
             <h5 class="font-weight-light">힘겨운 싸움을 이어가며 자신의 자리에서 묵묵히 최선을 다하는 우리 모두가 히어로 입니다.</h5>
         </div>
 
-        <div class="col-10 offset-1 col-md-6 mt-md-5 text-gray-900">
+        <div class="col-10 offset-1 col-md-6 mt-4 text-gray-900">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-weight-bold">이용안내.</h1>
-                    <h4 class="mb-3 font-weight-light">마스크히어로의 사용방법을 안내해드려요.</h4>
+                    <h2 class="text-weight-bold">이용안내.</h2>
+                    <h5 class="mb-3 font-weight-light">마스크히어로의 사용방법을 안내해드려요.</h5>
                 </div>
                 <div class="col-12 col-sm-3 mt-3">
                     <div class="card h-100">
