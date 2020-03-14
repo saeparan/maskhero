@@ -77,6 +77,8 @@
         today.setHours(0, 0, 0, 0);
 
         function onSuccessGeolocation(position) {
+            $('.spinner-modal').modal('hide');
+
             var location = new naver.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
@@ -90,6 +92,8 @@
         }
 
         function onErrorGeolocation() {
+            $('.spinner-modal').modal('hide');
+
             get_store_set_marker(map.center.y, map.center.x);
         }
 
@@ -98,48 +102,43 @@
         });
 
         function get_store_set_marker(lat, lng) {
-            $('.spinner-modal').modal('show').on('shown.bs.modal', function () {
-                axios.get('/api/store/' + lat + '/' + lng, {})
-                    .then(function (response) {
-                        for (var i = 0; i < markers.length; i++) {
-                            markers[i].setMap(null);
-                        }
-                        markers = [];
+            axios.get('/api/store/' + lat + '/' + lng, {})
+                .then(function (response) {
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(null);
+                    }
+                    markers = [];
 
-                        var data = response.data;
-                        for (var i = 0; i < data.length; i++) {
-                            var dataItem = data[i];
-                            if (new Date(dataItem.stock_at) < today || dataItem.stock_at === null) {
-                                dataItem.remain_stat = 'none';
-                            }
-                            if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
-                                dataItem.remain_stat = 'few';
-                            }
-                            var marker = new naver.maps.Marker({
-                                position: new naver.maps.LatLng(dataItem.lat, dataItem.lng),
-                                map: map,
-                                icon: {
-                                    content: `
+                    var data = response.data;
+                    for (var i = 0; i < data.length; i++) {
+                        var dataItem = data[i];
+                        if (new Date(dataItem.stock_at) < today || dataItem.stock_at === null) {
+                            dataItem.remain_stat = 'none';
+                        }
+                        if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
+                            dataItem.remain_stat = 'few';
+                        }
+                        var marker = new naver.maps.Marker({
+                            position: new naver.maps.LatLng(dataItem.lat, dataItem.lng),
+                            map: map,
+                            icon: {
+                                content: `
                                 <div data-code="${dataItem.code}" class="div-store p-2 bg-${stock_color[dataItem.remain_stat]} text-white d-inline-block rounded border-dark">
                                      <h6 class="mb-1 font-weight-light">${dataItem.name}</h6>
                                      <h5 class="mb-0">${stock_at[dataItem.remain_stat]}</h5>
                                 </div>
                                 `,
-                                    size: new naver.maps.Size(38, 58),
-                                    anchor: new naver.maps.Point(19, 58),
-                                }
-                            });
-                            markers.push(marker);
-                        }
-                        $('.spinner-modal').modal('hide');
-                    })
-                    .catch(function (error) {
-                        $('.spinner-modal').modal('hide');
-                    })
-                    .then(function () {
-                        $('.spinner-modal').modal('hide');
-                    });
-            });
+                                size: new naver.maps.Size(38, 58),
+                                anchor: new naver.maps.Point(19, 58),
+                            }
+                        });
+                        markers.push(marker);
+                    }
+                })
+                .catch(function (error) {
+                })
+                .then(function () {
+                });
         }
 
         jQuery(function () {
@@ -182,7 +181,9 @@
             });
 
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+                $('.spinner-modal').modal('show').on('shown.bs.modal', function () {
+                    navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+                });
             }
         });
     </script>
