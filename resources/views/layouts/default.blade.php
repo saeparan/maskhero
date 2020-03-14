@@ -134,7 +134,7 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.5/metisMenu.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @yield('script')
 </body>
