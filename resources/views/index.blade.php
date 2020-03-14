@@ -28,7 +28,8 @@
                     <h5 id="store_update_time" class="font-weight-light">2020-02-02 14:55</h5>
 
                     @if (date('H') > 21 || date('H') < 8)
-                    <h5 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트 됩니다.</h5>
+                        <h5 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트
+                            됩니다.</h5>
                     @endif
 
                     <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>
@@ -73,7 +74,7 @@
             'break': 'danger',
         }
         var today = new Date();
-        today.setHours(0,0,0,0);
+        today.setHours(0, 0, 0, 0);
 
         function onSuccessGeolocation(position) {
             var location = new naver.maps.LatLng(position.coords.latitude,
@@ -97,48 +98,48 @@
         });
 
         function get_store_set_marker(lat, lng) {
-            $('.spinner-modal').modal('show');
-
-            axios.get('/api/store/' + lat + '/' + lng, {})
-                .then(function (response) {
-                    for (var i = 0; i < markers.length; i++) {
-                        markers[i].setMap(null);
-                    }
-                    markers = [];
-
-                    var data = response.data;
-                    for (var i = 0; i < data.length; i++) {
-                        var dataItem = data[i];
-                        if( new Date(dataItem.stock_at) < today || dataItem.stock_at === null ) {
-                            dataItem.remain_stat = 'none';
+            $('.spinner-modal').modal('show').on('shown.bs.modal', function () {
+                axios.get('/api/store/' + lat + '/' + lng, {})
+                    .then(function (response) {
+                        for (var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
                         }
-                        if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
-                            dataItem.remain_stat = 'few';
-                        }
-                        var marker = new naver.maps.Marker({
-                            position: new naver.maps.LatLng(dataItem.lat, dataItem.lng),
-                            map: map,
-                            icon: {
-                                content: `
+                        markers = [];
+
+                        var data = response.data;
+                        for (var i = 0; i < data.length; i++) {
+                            var dataItem = data[i];
+                            if (new Date(dataItem.stock_at) < today || dataItem.stock_at === null) {
+                                dataItem.remain_stat = 'none';
+                            }
+                            if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
+                                dataItem.remain_stat = 'few';
+                            }
+                            var marker = new naver.maps.Marker({
+                                position: new naver.maps.LatLng(dataItem.lat, dataItem.lng),
+                                map: map,
+                                icon: {
+                                    content: `
                                 <div data-code="${dataItem.code}" class="div-store p-2 bg-${stock_color[dataItem.remain_stat]} text-white d-inline-block rounded border-dark">
                                      <h6 class="mb-1 font-weight-light">${dataItem.name}</h6>
                                      <h5 class="mb-0">${stock_at[dataItem.remain_stat]}</h5>
                                 </div>
                                 `,
-                                size: new naver.maps.Size(38, 58),
-                                anchor: new naver.maps.Point(19, 58),
-                            }
-                        });
-                        markers.push(marker);
-                    }
-                    spinner_close();
-                })
-                .catch(function (error) {
-                    spinner_close();
-                })
-                .then(function () {
-                    spinner_close();
-                });
+                                    size: new naver.maps.Size(38, 58),
+                                    anchor: new naver.maps.Point(19, 58),
+                                }
+                            });
+                            markers.push(marker);
+                        }
+                        $('.spinner-modal').modal('hide');
+                    })
+                    .catch(function (error) {
+                        $('.spinner-modal').modal('hide');
+                    })
+                    .then(function () {
+                        $('.spinner-modal').modal('hide');
+                    });
+            });
         }
 
         jQuery(function () {
@@ -154,14 +155,14 @@
                         if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
                             dataItem.remain_stat = 'few';
                         }
-                        if( new Date(dataItem.stock_at) < today || dataItem.stock_at === null ) {
+                        if (new Date(dataItem.stock_at) < today || dataItem.stock_at === null) {
                             dataItem.remain_stat = 'none';
                         }
 
                         $('#store_name').text(dataItem.name);
                         $('#store_addr').text(dataItem.addr);
 
-                        if( dataItem.stock_at_text == 0 ) {
+                        if (dataItem.stock_at_text == 0) {
                             dataItem.stock_at_text = '입고일 확인 불가';
                         } else {
                             dataItem.stock_at_text = dataItem.stock_at_text + ' 마스크 입고';
@@ -184,11 +185,5 @@
                 navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
             }
         });
-
-        function spinner_close() {
-            setTimeout(function() {
-                $('.spinner-modal').modal('hide');
-            }, 555);
-        }
     </script>
 @stop
