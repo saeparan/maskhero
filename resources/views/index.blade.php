@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
+
     <div id="map" style="width:100%;height:92%;"></div>
     <div class="fixed-bottom mb-0 row">
         <div class="col-10 offset-1 col-md-6 offset-md-3">
@@ -11,6 +12,9 @@
                     <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="card-body text-gray-900">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                     <div class="row pb-1">
                         <div class="col-md-6">
                             <span id="store_badge" class="badge badge-pill badge-danger mr-1 align-middle">품절</span>
@@ -82,10 +86,12 @@
             });
 
             get_store_set_marker(position.coords.latitude, position.coords.longitude);
+            $('.spinner-modal').modal('hide');
         }
 
         function onErrorGeolocation() {
             get_store_set_marker(map.center.y, map.center.x);
+            $('.spinner-modal').modal('hide');
         }
 
         naver.maps.Event.addListener(map, 'dragend', function (e) {
@@ -93,6 +99,7 @@
         });
 
         function get_store_set_marker(lat, lng) {
+            $('.spinner-modal').modal('show');
             axios.get('/api/store/' + lat + '/' + lng, {})
                 .then(function (response) {
                     for (var i = 0; i < markers.length; i++) {
@@ -125,20 +132,24 @@
                         });
                         markers.push(marker);
                     }
+                    $('.spinner-modal').modal('hide');
                 })
                 .catch(function (error) {
-
+                    $('.spinner-modal').modal('hide');
                 })
                 .then(function () {
-
+                    $('.spinner-modal').modal('hide');
                 });
         }
 
         jQuery(function () {
             $('body').on('click', '.div-store', function () {
+                $('#div-store-info .spinner-border').show();
                 var code = $(this).data('code');
                 axios.get('/api/store/' + code)
                     .then(function (response) {
+                        $('#div-store-info .spinner-border').hide();
+
                         var dataItem = response.data;
 
                         if (dataItem.remain_stat === undefined || dataItem.remain_stat === null) {
@@ -171,9 +182,8 @@
             });
 
             if (navigator.geolocation) {
-                setTimeout(function () {
-                    navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
-                }, 500);
+                $('.spinner-modal').modal('show');
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
             }
         });
     </script>

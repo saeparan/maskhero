@@ -95,11 +95,33 @@
             font-smoothing: antialiased;
             -webkit-font-smoothing: antialiased;
         }
+
+        .bd-example-modal-lg .modal-dialog{
+            display: table;
+            position: relative;
+            margin: 0 auto;
+            top: calc(50% - 24px);
+        }
+
+        .bd-example-modal-lg .modal-dialog .modal-content{
+            background-color: transparent;
+            border: none;
+        }
     </style>
 </head>
 <body class="bg-light">
 
 <div class="container-fluid m-0 p-0" style="height: 100%;">
+    <div class="spinner-modal modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content" style="width: 48px">
+                <div class="spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
         <a class="navbar-brand" href="#">마스크히어로</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
