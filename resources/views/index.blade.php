@@ -18,13 +18,13 @@
                         </div>
                     </div>
 
-                    <h6 id="store_addr" class="pb-2 font-weight-light">서울시</h6>
-                    <h5 id="store_stock" class="pb-2">현재 재고 0개</h5>
-                    <h6 id="store_stock_at" class="font-weight-light"></h6>
-                    <span id="store_update_time">2020-02-02 14:55</span>
+                    <h5 id="store_addr" class="pb-2 font-weight-light">서울시</h5>
+                    <h4 id="store_stock" class="pb-2">현재 재고 0개</h4>
+                    <h5 id="store_stock_at" class="font-weight-light"></h5>
+                    <h5 id="store_update_time" class="font-weight-light">2020-02-02 14:55</h5>
 
                     @if (date('H') > 21 || date('H') < 8)
-                    <h6 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트 됩니다.</h6>
+                    <h5 id="store_stock" class="pt-2 font-weight-light">현재는 약국 운영시간이 아닐 수 있으며, 재고는 오전 8시부터 다시 업데이트 됩니다.</h5>
                     @endif
 
                     <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>
@@ -157,7 +157,7 @@
                             dataItem.stock_at_text = dataItem.stock_at_text + ' 마스크 입고';
                         }
                         $('#store_stock_at').text(dataItem.stock_at_text);
-                        $('#store_update_time').text(dataItem.created_at + ' 기준');
+                        $('#store_update_time').text(dataItem.created_at_text + ' 기준');
 
                         $('#store_badge').text(stock_at[dataItem.remain_stat]).removeClass('badge-danger badge-primary').addClass('badge-' + stock_color[dataItem.remain_stat]);
                         $('#store_stock').text(stock_text[dataItem.remain_stat]);

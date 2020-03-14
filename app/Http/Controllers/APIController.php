@@ -44,6 +44,12 @@ class APIController extends Controller
             $stores->stock_at_text = date('m월 d일 H시 i분', strtotime($stores->stock_at));
         }
 
+        if( $stores->created_at == null ) {
+            $stores->created_at_text = 0;
+        } else {
+            $stores->created_at_text = date('m월 d일 H시 i분', strtotime($stores->created_at));
+        }
+
         $stores->update_time = date('m월 d일 H시 i분', strtotime($stores->update_time));
         return response()->json($stores);
     }

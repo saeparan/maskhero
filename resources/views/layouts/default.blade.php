@@ -58,8 +58,12 @@
             font-size: .8rem !important;
         }
 
-        .div-store-info > .card-body h6 {
-            font-size: 0.4rem !important;
+        #div-store-info > .card-body h5 {
+            font-size: 1rem !important;
+        }
+
+        #div-store-info > .card-body h6 {
+            font-size: 0.8rem !important;
         }
 
         .card-bottom {
@@ -111,9 +115,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">지도</a>
                 </li>
-                {{--                <li class="nav-item active">--}}
-                {{--                    <a class="nav-link" href="#">판매처</a>--}}
-                {{--                </li>--}}
+{{--                <li class="nav-item active">--}}
+{{--                    <a class="nav-link" href="/stores">판매처 목록</a>--}}
+{{--                </li>--}}
             </ul>
         </div>
     </nav>
