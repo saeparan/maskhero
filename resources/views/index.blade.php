@@ -86,12 +86,10 @@
             });
 
             get_store_set_marker(position.coords.latitude, position.coords.longitude);
-            $('.spinner-modal').modal('hide');
         }
 
         function onErrorGeolocation() {
             get_store_set_marker(map.center.y, map.center.x);
-            $('.spinner-modal').modal('hide');
         }
 
         naver.maps.Event.addListener(map, 'dragend', function (e) {
@@ -100,6 +98,7 @@
 
         function get_store_set_marker(lat, lng) {
             $('.spinner-modal').modal('show');
+
             axios.get('/api/store/' + lat + '/' + lng, {})
                 .then(function (response) {
                     for (var i = 0; i < markers.length; i++) {
@@ -132,13 +131,13 @@
                         });
                         markers.push(marker);
                     }
-                    $('.spinner-modal').modal('hide');
+                    spinner_close();
                 })
                 .catch(function (error) {
-                    $('.spinner-modal').modal('hide');
+                    spinner_close();
                 })
                 .then(function () {
-                    $('.spinner-modal').modal('hide');
+                    spinner_close();
                 });
         }
 
@@ -182,9 +181,14 @@
             });
 
             if (navigator.geolocation) {
-                $('.spinner-modal').modal('show');
                 navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
             }
         });
+
+        function spinner_close() {
+            setTimeout(function() {
+                $('.spinner-modal').modal('hide');
+            }, 555);
+        }
     </script>
 @stop
