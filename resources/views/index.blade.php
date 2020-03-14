@@ -7,7 +7,7 @@
             <div id="div-store-info" class="card-bottom shadow-sm card shadow w-100"
                  style="margin: 0px auto; display: none;">
                 <div id="btn-store-info-close" class="pull-right position-absolute font-weight-light text-md-right"
-                     style="right: 1rem; top: 1rem; cursor: pointer;">
+                     style="font-size: 1.34rem; right: 1rem; top: 1rem; cursor: pointer;">
                     <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="card-body text-gray-900">
