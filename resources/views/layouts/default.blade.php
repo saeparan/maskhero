@@ -21,10 +21,10 @@
     <link href=//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css rel=stylesheet type=text/css>
     <script type="text/javascript"
             src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dn4q87xmjw"></script>
-    <title>마스크히어로 - 마스크 걱정없는 그날까지 (공공마스크)</title>
-    <meta name="description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <title>마스크히어로</title>
+    <meta name="description" content="공적마스크를 쉽고 빠르게 찾아보고, 코로나19에 대비하세요." class="next-head" />
     <meta name="twitter:title" content="마스크히어로" class="next-head" />
-    <meta name="twitter:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <meta name="twitter:description" content="공적마스크를 쉽고 빠르게 찾아보고, 코로나19에 대비하세요." class="next-head" />
     <meta name="twitter:creator" content="maskhero" class="next-head" />
     <meta name="twitter:site" content="maskhero" class="next-head" />
     <meta name="twitter:url" content="https://maskhero.net/" class="next-head" />
@@ -32,7 +32,7 @@
     <meta property="og:url" content="https://maskhero.net" class="next-head" />
     <meta property="og:site_name" content="마스크히어로" class="next-head" />
     <meta property="og:image" content="https://maskhero.net/img/mask.png" class="next-head" />
-    <meta property="og:description" content="마스크히어로 - 마스크 걱정없는 그날까지" class="next-head" />
+    <meta property="og:description" content="공적마스크를 쉽고 빠르게 찾아보고, 코로나19에 대비하세요." class="next-head" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <style>
         body, html {
