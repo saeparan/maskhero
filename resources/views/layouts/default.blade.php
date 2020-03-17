@@ -16,6 +16,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.0.7/css/sb-admin-2.min.css"
           crossorigin="anonymous">
     <link href=//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css rel=stylesheet type=text/css>

@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-
     <div id="map" style="width:100%;height:92%;"></div>
     <div class="fixed-bottom mb-0 row">
         <div class="col-10 offset-1 col-md-6 offset-md-3">
@@ -79,13 +78,31 @@
         function onSuccessGeolocation(position) {
             $('.spinner-modal').modal('hide');
 
+            var my_position = new naver.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var location = new naver.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
 
             map.setCenter(location);
             new naver.maps.Marker({
-                position: new naver.maps.LatLng(position.coords.latitude, position.coords.longitude),
-                map: map
+                position: my_position,
+                map: map,
+                icon: {
+                    content: `
+                            <div class="display-lg" style="color: #1976d2;">
+                                <i class="fas fa-3x fa-map-marker-alt"></i>
+                            </div>
+                            `,
+                    size: new naver.maps.Size(24, 32),
+                    anchor: new naver.maps.Point(24, 32),
+                }
+            });
+
+            var circle = new naver.maps.Circle({
+                map: map,
+                center: my_position,
+                radius: 100,
+                fillColor: '#2196f3',
+                fillOpacity: 0.2
             });
 
             get_store_set_marker(position.coords.latitude, position.coords.longitude);
