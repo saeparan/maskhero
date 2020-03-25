@@ -9,6 +9,31 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-2389884-5');
+
+        var stock_at = {
+            'plenty': '충분',
+            'some': '보통',
+            'few': '부족',
+            'empty': '재고없음',
+            'none': '입고전',
+            'break': '판매중지',
+        }
+        var stock_text = {
+            'plenty': '100개 이상 보유',
+            'some': '30~99개 보유',
+            'few': '2~29개 보유',
+            'empty': '재고없음',
+            'none': '오늘 입고 안됨',
+            'break': '업체 사정으로 판매중지',
+        }
+        var stock_color = {
+            'plenty': 'success',
+            'some': 'primary',
+            'few': 'primary',
+            'empty': 'danger',
+            'none': 'dark',
+            'break': 'danger',
+        }
     </script>
 
     <meta charset="utf-8">
@@ -138,9 +163,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/">지도</a>
                 </li>
-{{--                <li class="nav-item active">--}}
-{{--                    <a class="nav-link" href="/stores">판매처 목록</a>--}}
-{{--                </li>--}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/stores">판매처목록</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -157,7 +182,7 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.5/metisMenu.min.js"></script>
-{{--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>--}}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 @yield('script')
 </body>

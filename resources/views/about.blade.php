@@ -17,8 +17,17 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-weight-bold">이용안내.</h2>
-                    <h5 class="mb-3 font-weight-light">마스크히어로의 사용방법을 안내해드려요.</h5>
+                    <h5 class="font-weight-light">마스크히어로의 사용방법을 안내해드려요.</h5>
                 </div>
+                <div class="col-12">
+                    <h6 class="pt-3 font-weight-light">
+                        <p>데이터 업데이트는 매일 오전 8시 부터 오후 10시까지 이루어집니다.</p>
+                        <p>표시되는 재고, 입고시간, 품절시간은 실제 판매장소 담당자가 시스템에 입력하는 시점, 업무상황 등에 따라 다를 수 있습니다.</p>
+                        <p>일선에서 활동중인 공무원님, 약사님, 판매자님들은 최선을 다하고 있으며, 관련 문제로 항의는 자제해주시길 바라며 응원과 격려 부탁드립니다.</p>
+                        <p>📧 사이트 관련 문의는 se7enmail@gmail.com</p>
+                    </h6>
+                </div>
+
                 <div class="col-12 col-sm-3 mt-3">
                     <div class="card h-100">
                         <div class="card-header">전국 공적마스크 판매장소</div>
@@ -42,14 +51,6 @@
                             <h3 class="card-title">추후공개</h3>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 mt-3">
-                    <h6 class="pt-3 font-weight-light">
-                        <p>데이터 업데이트는 매일 오전 8시 부터 오후 10시까지 이루어집니다.</p>
-                        <p>표시되는 재고, 입고시간, 품절시간은 실제 판매장소 담당자가 시스템에 입력하는 시점, 업무상황 등에 따라 다를 수 있습니다.</p>
-                        <p>일선에서 활동중인 공무원님, 약사님, 판매자님들은 최선을 다하고 있으며, 관련 문제로 항의는 자제해주시길 바라며 응원과 격려 부탁드립니다.</p>
-                        <p>📧 사이트 관련 문의는 se7enmail@gmail.com</p>
-                    </h6>
                 </div>
             </div>
         </div>

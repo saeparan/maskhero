@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/store/list/{lat}/{lng}', 'APIController@getStoresList');
 Route::get('/store/{lat}/{lng}', 'APIController@getStores');
 Route::get('/store/{code}', 'APIController@getStore');
+

@@ -48,30 +48,6 @@
         });
         var dragTimer = null;
         var markers = [];
-        var stock_at = {
-            'plenty': '충분',
-            'some': '보통',
-            'few': '부족',
-            'empty': '재고없음',
-            'none': '입고전',
-            'break': '판매중지',
-        }
-        var stock_text = {
-            'plenty': '100개 이상 보유',
-            'some': '30~99개 보유',
-            'few': '2~29개 보유',
-            'empty': '재고없음',
-            'none': '오늘 입고 안됨',
-            'break': '업체 사정으로 판매중지',
-        }
-        var stock_color = {
-            'plenty': 'success',
-            'some': 'primary',
-            'few': 'primary',
-            'empty': 'danger',
-            'none': 'dark',
-            'break': 'danger',
-        }
         var today = new Date();
         today.setHours(0, 0, 0, 0);
 

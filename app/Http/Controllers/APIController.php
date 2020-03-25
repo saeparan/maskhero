@@ -29,6 +29,45 @@ class APIController extends Controller
         return response()->json($stores);
     }
 
+    public function getStoresList($lat, $lng)
+    {
+        $stores = DB::table('stores')
+            ->select(['code', 'addr', 'name', 'remain_stat', 'stock_at', 'update_time', 'type', 'lat', 'lng', 'created_at'])
+            ->selectRaw('
+                 (
+                  6373 * acos (
+                  cos ( radians( ? ) )
+                  * cos( radians( X(coordinate) ) )
+                  * cos( radians( Y(coordinate) ) - radians( ? ) )
+                  + sin ( radians( ? ) )
+                  * sin( radians( X(coordinate) ) )
+                )
+            ) AS distance
+            ', [$lat, $lng, $lat])
+            ->having('distance', '<', 1.0)
+            ->orderBy('distance')
+            ->limit(20)
+            ->get()
+        ;
+
+        foreach( $stores as $i => $store ) {
+            $stores[$i]->{"stock_at_text"} = '';
+            if( $store->stock_at == null ) {
+                $stores[$i]->stock_at_text = 0;
+            } else {
+                $stores[$i]->stock_at_text = date('m월 d일 H시 i분', strtotime($store->stock_at));
+            }
+
+            if( $store->created_at == null ) {
+                $stores[$i]->created_at_text = 0;
+            } else {
+                $stores[$i]->created_at_text = date('m월 d일 H시 i분', strtotime($store->created_at));
+            }
+        }
+
+        return response()->json($stores);
+    }
+
     public function getStore($code)
     {
         $stores = DB::table('stores')
