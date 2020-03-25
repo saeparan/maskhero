@@ -30,7 +30,7 @@
                     <li v-for="store in stores" class="list-group-item flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">@{{ store.name }}</h5>
-                            <small>@{{ parseFloat(store.distance * 10).toFixed(1) }} KM</small>
+                            <small>@{{ parseFloat(store.distance * 100).toFixed(1) }} KM</small>
                         </div>
                         <p class="mb-2">@{{ store.addr }}</p>
                         <p class="mb-0" v-if="store.remain_stat" >
