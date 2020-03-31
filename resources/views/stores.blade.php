@@ -30,7 +30,10 @@
             </div>
         </div>
 
-        <div v-if="stores.length" class="col-10 offset-1 col-md-6 mt-3 font-weight-light">
+        <div v-if="stores.length" class="col-10 offset-1 col-md-6 my-2 font-weight-light text-right">
+            @{{ update_time }}
+        </div>
+        <div v-if="stores.length" class="col-10 offset-1 col-md-6 mt-1 font-weight-light">
             <div class="card" class="mt-5">
                 <ul class="list-group list-group-flush">
                     <li v-for="store in stores" class="list-group-item flex-column align-items-start">
@@ -56,22 +59,6 @@
 
 @section('script')
     <script>
-        var seemSize = 1,
-            zoomSize = 1,
-            browser = navigator.userAgent.toLowerCase();
-        function zoomIn()
-        {
-
-        }
-        function zoomOut()
-        {
-
-        }
-        function zoom()
-        {
-
-        }
-
         var vm = new Vue({
             el: '#stores',
             mounted: function () {
@@ -86,7 +73,8 @@
                 stock_text: stock_text,
                 seemSize: 1,
                 zoomSize: 1,
-                browser: navigator.userAgent.toLowerCase()
+                browser: navigator.userAgent.toLowerCase(),
+                update_time: '',
             },
             methods: {
                 zoomout: () => {
@@ -128,6 +116,16 @@
                         .then(function (response) {
                             if( response.data.length > 0 ) {
                                 vm.stores = response.data;
+
+                                let t1 = moment(response.data[0].update_time);
+                                let t2 = moment();
+
+
+                                if( t2.hour() > 22 || t2.hour() < 8 ) {
+                                    vm.update_time = '매일 8시 부터 22시까지만 데이터가 제공됩니다.';
+                                } else {
+                                    vm.update_time = parseInt(moment.duration(t2.diff(t1)).asMinutes()) + '분 전 업데이트됨.';
+                                }
                             }
                         });
                 }

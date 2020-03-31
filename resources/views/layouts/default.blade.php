@@ -185,6 +185,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.5/metisMenu.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 @yield('script')
 </body>
 </html>
