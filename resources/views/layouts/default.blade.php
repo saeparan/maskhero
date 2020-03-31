@@ -45,8 +45,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.0.7/css/sb-admin-2.min.css"
           crossorigin="anonymous">
     <link href=//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css rel=stylesheet type=text/css>
-    <script type="text/javascript"
-            src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dn4q87xmjw"></script>
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=dn4q87xmjw"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
     <title>마스크히어로</title>
     <meta name="description" content="공적마스크를 쉽고 빠르게 찾아보고, 코로나19에 대비하세요." class="next-head" />
     <meta name="twitter:title" content="마스크히어로" class="next-head" />

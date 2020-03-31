@@ -31,8 +31,11 @@
                             됩니다.</h5>
                     @endif
 
-                    <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>
-                    <h6 id="" class="font-weight-light">데이터상 실제 재고와 10분 이상 차이가 있을 수 있으므로, 약국에 항의는 하지 말아주세요.</h6>
+{{--                    <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>--}}
+{{--                    <h6 id="" class="font-weight-light">데이터상 실제 재고와 10분 이상 차이가 있을 수 있으므로, 약국에 항의는 하지 말아주세요.</h6>--}}
+                    <div class="mt-3">
+                        <button id="btn-navigate" type="button" class="btn btn-primary btn-sm"><i class="fas fa-road"></i> 카카오내비 길찾기</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,6 +53,8 @@
         var markers = [];
         var today = new Date();
         today.setHours(0, 0, 0, 0);
+
+        Kakao.init('8e8c8f3913b28eff6e0915b6a49a4588');
 
         function onSuccessGeolocation(position) {
             $('.spinner-modal').modal('hide');
@@ -166,11 +171,25 @@
                         $('#store_stock').text(stock_text[dataItem.remain_stat]);
 
                         $('#div-store-info').fadeIn('fast');
+
+                        $('#btn-navigate')
+                            .data('lat', dataItem.lat)
+                            .data('lng', dataItem.lng)
+                            .data('name', dataItem.name);
                     });
             });
 
             $('#btn-store-info-close').click(function () {
                 $('#div-store-info').fadeOut('fast');
+            });
+
+            $('#btn-navigate').click(function() {
+                Kakao.Navi.start({
+                    name: $(this).data('name'),
+                    x: $(this).data('lat'),
+                    y: $(this).data('lng'),
+                    coordType: 'wgs84'
+                });
             });
 
             if (navigator.geolocation) {
