@@ -71,27 +71,27 @@
                 stock_at: stock_at,
                 stock_color: stock_color,
                 stock_text: stock_text,
-                seemSize: 1,
-                zoomSize: 1,
-                browser: navigator.userAgent.toLowerCase(),
+                seemSize: parseInt(1),
+                zoomSize: parseInt(1),
                 update_time: '',
             },
             methods: {
                 zoomout: () => {
-                    this.seemSize -= 0.05;
-                    this.zoomSize /= 1.2;
+                    vm.seemSize -= 0.05;
+                    vm.zoomSize /= 1.2;
                     vm.zoom();
                 },
                 zoomin: () => {
-                    this.seemSize += 0.05;
-                    this.zoomSize *= 1.2;
+                    vm.seemSize += 0.05;
+                    vm.zoomSize = vm.zoomSize * 1.2;
                     vm.zoom();
                 },
                 zoom: () => {
-                    let seemSize = this.seemSize;
-                    let zoomSize = this.zoomSize;
-                    console.log( this.browser.indexOf("firefox") );
-                    if (this.browser.indexOf("firefox") != -1) {
+                    let seemSize = vm.seemSize;
+                    let zoomSize = vm.zoomSize;
+                    let browser = navigator.userAgent.toLowerCase();
+
+                    if (browser.indexOf("firefox") != -1) {
                         document.body.style.webkitTransform =    'scale('+seemSize+')';
                         document.body.style.webkitTransformOrigin = '50% 0 0'; //늘리고 줄였을때위치,
                         document.body.style.msTransform =   'scale('+seemSize+')';
