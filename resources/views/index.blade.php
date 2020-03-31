@@ -186,8 +186,8 @@
             $('#btn-navigate').click(function() {
                 Kakao.Navi.start({
                     name: $(this).data('name'),
-                    x: $(this).data('lat'),
-                    y: $(this).data('lng'),
+                    x: parseFloat($(this).data('lat')),
+                    y: parseFloat($(this).data('lng')),
                     coordType: 'wgs84'
                 });
             });
