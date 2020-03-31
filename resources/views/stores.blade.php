@@ -14,10 +14,16 @@
                         <div class="col-12">
                             보여드릴 위치를 지정해보세요.
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-6 mt-3">
                             <button type="button" class="btn btn-outline-primary btn-sm" v-on:click="geoLocation">
-                                <i class="fas fa-location-arrow fa-fw"></i> 내 위치로 지정
+                                <i class="fas fa-location-arrow fa-fw"></i> 내 주변 찾기
                             </button>
+                        </div>
+                        <div class="col-6 mt-3 text-right">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-outline-primary btn-sm" v-on:click="zoomout">글씨크기 줄임</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm" v-on:click="zoomin">늘림</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,6 +56,22 @@
 
 @section('script')
     <script>
+        var seemSize = 1,
+            zoomSize = 1,
+            browser = navigator.userAgent.toLowerCase();
+        function zoomIn()
+        {
+
+        }
+        function zoomOut()
+        {
+
+        }
+        function zoom()
+        {
+
+        }
+
         var vm = new Vue({
             el: '#stores',
             mounted: function () {
@@ -62,15 +84,43 @@
                 stock_at: stock_at,
                 stock_color: stock_color,
                 stock_text: stock_text,
+                seemSize: 1,
+                zoomSize: 1,
+                browser: navigator.userAgent.toLowerCase()
             },
             methods: {
+                zoomout: () => {
+                    this.seemSize -= 0.05;
+                    this.zoomSize /= 1.2;
+                    vm.zoom();
+                },
+                zoomin: () => {
+                    this.seemSize += 0.05;
+                    this.zoomSize *= 1.2;
+                    vm.zoom();
+                },
+                zoom: () => {
+                    let seemSize = this.seemSize;
+                    let zoomSize = this.zoomSize;
+                    console.log( this.browser.indexOf("firefox") );
+                    if (this.browser.indexOf("firefox") != -1) {
+                        document.body.style.webkitTransform =    'scale('+seemSize+')';
+                        document.body.style.webkitTransformOrigin = '50% 0 0'; //늘리고 줄였을때위치,
+                        document.body.style.msTransform =   'scale('+seemSize+')';
+                        document.body.style.msTransformOrigin = '50% 0 0';
+                        document.body.style.transform = 'scale('+seemSize+')';
+                        document.body.style.transformOrigin='50% 0 0';
+                        document.body.style.OTransform = 'scale('+seemSize+')';
+                        document.body.style.OTransformOrigin='50% 0 0';
+                    }else{
+                        document.body.style.zoom = zoomSize;
+                    }
+                },
                 geoLocation: () => {
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(vm.fetchData, () => {
 
                         });
-                    } else {
-
                     }
                 },
                 fetchData: (position) => {
@@ -82,6 +132,6 @@
                         });
                 }
             }
-        })
+        });
     </script>
 @stop
