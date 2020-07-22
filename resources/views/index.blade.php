@@ -1,6 +1,29 @@
 @extends('layouts.default')
 
 @section('content')
+    <div id="myModal" class="modal text-dark" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">서비스 종료 안내</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>2020년 07월 12일부로 공적 마스크 제도가 종료됨에 따라 서비스를 종료합니다.</p>
+                    <p>대한민국과 전 세계가 코로나로부터 하루빨리 해방되면 좋겠습니다.</p>
+                    <p>감사합니다, 건강하세요.</p>
+                    <p><small>(이 사이트는 멈추지 않고 07월 11일 데이터로 유지하며 남겨두겠습니다.)</small></p>
+                    <footer class="blockquote-footer">2020년 07월 22일 <cite>개발자 박영준</cite></footer>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="map" style="width:100%;height:92%;"></div>
     <div class="fixed-bottom mb-0 row">
         <div class="col-10 offset-1 col-md-6 offset-md-3">
@@ -31,10 +54,12 @@
                             됩니다.</h5>
                     @endif
 
-{{--                    <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>--}}
-{{--                    <h6 id="" class="font-weight-light">데이터상 실제 재고와 10분 이상 차이가 있을 수 있으므로, 약국에 항의는 하지 말아주세요.</h6>--}}
+                    {{--                    <h6 id="" class="pt-4 font-weight-light">일선에서 노고에 고생이 많으신 약사님들께 응원과 격려 부탁드립니다.</h6>--}}
+                    {{--                    <h6 id="" class="font-weight-light">데이터상 실제 재고와 10분 이상 차이가 있을 수 있으므로, 약국에 항의는 하지 말아주세요.</h6>--}}
                     <div class="mt-3">
-                        <button id="btn-navigate" type="button" class="btn btn-primary btn-sm"><i class="fas fa-road"></i> 카카오내비 길찾기</button>
+                        <button id="btn-navigate" type="button" class="btn btn-primary btn-sm"><i
+                                class="fas fa-road"></i> 카카오내비 길찾기
+                        </button>
                     </div>
                 </div>
             </div>
@@ -140,6 +165,8 @@
         }
 
         jQuery(function () {
+            $('#myModal').modal('show');
+
             $('body').on('click', '.div-store', function () {
                 $('#div-store-info .spinner-border').show();
                 var code = $(this).data('code');
@@ -183,7 +210,7 @@
                 $('#div-store-info').fadeOut('fast');
             });
 
-            $('#btn-navigate').click(function() {
+            $('#btn-navigate').click(function () {
                 Kakao.Navi.start({
                     name: $(this).data('name'),
                     x: parseFloat($(this).data('lng')),
